@@ -6,7 +6,6 @@
 import string
 import statistics
 
-
 def test_for_hashed_info():
 
     characters = string.ascii_lowercase[:6] + string.digits
@@ -32,29 +31,13 @@ def test_for_hashed_info():
             else:
                 char_freq[each_char] = 0
 
-
     for key,val in char_freq.items():
         print(key,val)
-
 
     freq = list(char_freq.values())
 
     var = statistics.stdev(freq)
     print(var)
 
-
-    
-
-        
-
-        
-    
-
-
-
-
-
-
 if __name__ == "__main__":
-
     test_for_hashed_info()
