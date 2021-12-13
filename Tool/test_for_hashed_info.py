@@ -38,9 +38,19 @@ def test_for_hashed_info():
 
 
     freq = list(char_freq.values())
-
+    
     var = statistics.stdev(freq)
-    print(var)
+    m = statistics.mean(freq)
+    
+    spread = var / m
+
+    if spread < .5:
+        print("Column seems to be hashed")
+        return True
+    else:
+        print("Column is not hashed")
+        return False
+
 
 
     
