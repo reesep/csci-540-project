@@ -17,7 +17,10 @@ $password = $_REQUEST['Pass'];
 
 // Performing insert query execution
 // here our table name is college
-$sql = "INSERT INTO user (firstname,password) VALUES ('$username','$password')";
+
+$hashed = md5($password)
+
+$sql = "INSERT INTO user (firstname,password) VALUES ('$username',$hashed)";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
