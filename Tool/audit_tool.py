@@ -6,6 +6,7 @@ import test_for_password_complexity
 import test_for_rainbow_vulnerability
 import test_for_weak_passwords
 import test_for_salt
+import test_for_hashing_algorithm
 
 ### TO DO: Replace .test() with appropriate function name (or change other .py
 ##                                                                                        (files to have .test func)
@@ -16,15 +17,15 @@ Function checks for different for information and database vulnerabilities
 def run_audit_tool():
 
     ## Read in all columns that should be checked
-    config = open("Tool/config.csv","r")
+    config = open("config.csv","r")
     columns_to_check = config.read().strip().split(",") ## convert into list
 
     ## test_for_sql_injection.test() ## TO DO
-    ## test_for_hashing_algorithm.test() ## TO DO
+    test_for_hashing_algorithm.test()
 
     for each in columns_to_check:  
 
-        file = open("Data/user.csv","r")
+        file = open("../Data/user.csv","r")
         columns = file.readline().strip().replace('"',"").split(",")
         index = columns.index(each)
 
