@@ -1,10 +1,10 @@
 import hashlib
 
 def weak_password_list():
-    file = open("/csci-540-project/Data/weak_passwords.csv")
+    file = open("../Data/weak_passwords.csv")
     passwords = file.readline
     wp = []
-    for password in passwords:
+    for password in file:
         md5 = hashlib.md5(password)
         sha1 = hashlib.sha1(password)
         sha256 = hashlib.sha256(password)

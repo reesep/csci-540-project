@@ -39,6 +39,7 @@ def run_audit_tool():
 
         if test_for_weak_passwords.test(each):
             print(each)
+            
         if test_for_hashed_info.test(each,da_list):
             test_for_rainbow_vulnerability.test(da_list,each)
             test_for_salt.test(da_list)
