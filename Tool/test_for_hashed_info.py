@@ -6,33 +6,27 @@
 import string
 import statistics
 
-def test_for_hashed_info():
+def test(each,word_list):
 
     characters = string.ascii_lowercase[:6] + string.digits
-
-    file = open("../Data/user.csv")
 
     char_freq = {}
 
     for each_char in characters:
         char_freq[each_char] = 0
 
-    columns = file.readline().strip().replace('"',"").split(",")
-    print(columns)
-    index = columns.index("password")
 
-    for each_line in file:
-        each_line = each_line.strip().replace('"',"").split(",")
 
-        for each_char in each_line[index]:
+    for each_word in word_list:
+
+
+        for each_char in each_word:
 
             if each_char in char_freq:
                 char_freq[each_char] += 1
             else:
                 char_freq[each_char] = 0
 
-    for key,val in char_freq.items():
-        print(key,val)
 
     freq = list(char_freq.values())
     
@@ -41,11 +35,13 @@ def test_for_hashed_info():
     
     spread = var / m
 
-    if spread < .5:
-        print("Column seems to be hashed")
+    if spread < .6:  ## .6 is a "calibrated" value.... but still sus
+        print("--- Testing for Hashed Column ---")
+        print("Column '" + each +"' seems to be hashed")
         return True
     else:
-        print("Column is not hashed")
+        print("--- Testing for Hashed Column ---")
+        print("WARNING: Column '" +each+"' is not hashed")
         return False
 
 

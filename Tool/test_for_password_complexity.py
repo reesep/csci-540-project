@@ -39,4 +39,3 @@ def main():
     else:
         print("password must contain at least\n 1 uppercase letter \n one number \n one special character \n minimum length of 6")
     
-main()
