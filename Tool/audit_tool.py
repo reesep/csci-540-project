@@ -5,7 +5,7 @@ import test_for_hashed_info
 import test_for_password_complexity
 import test_for_rainbow_vulnerability
 import test_for_weak_passwords
-
+import test_for_salt
 
 ### TO DO: Replace .test() with appropriate function name (or change other .py
 ##                                                                                        (files to have .test func)
@@ -37,7 +37,7 @@ def run_audit_tool():
 
         if test_for_hashed_info.test(each,da_list):
             test_for_rainbow_vulnerability.test(da_list,each)
-            #test_for_salt(da_list)  ## TO DO
+            test_for_salt.test(da_list)  
             pass
         else:
 
