@@ -24,14 +24,24 @@ def run_audit_tool():
 
     for each in columns_to_check:  
 
-        if test_for_hashed_info.test(each)
-            test_for_rainbow_vulnerability.test(each)
-            test_for_salt(each)  ## TO DO
+        file = open("user.csv","r")
+        columns = file.readline().strip().replace('"',"").split(",")
+        index = columns.index(each)
+
+        da_list = []
+        for each in file:
+            x = each.split(",")
+            da_list.append(x[index])
+        file.close()
+
+        if test_for_hashed_info.test(da_list)
+            test_for_rainbow_vulnerability.test(da_list)
+            test_for_salt(da_list)  ## TO DO
         else:
 
             if each == "password":
-                test_for_weak_passwords.test(each)  ## Need to rework some things
-                test_for_password_complexity.test(each) ## Need to rework some things
+                test_for_weak_passwords.test(da_list)  ## Need to rework some things
+                test_for_password_complexity.test(da_list) ## Need to rework some things
             
         
 
