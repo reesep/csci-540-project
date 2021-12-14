@@ -1,4 +1,5 @@
 import string
+
 def minimum_length(password):
     if len(password) < 6:
         return False
@@ -25,17 +26,18 @@ def contains_special_char(password):
             special = True
     return special
 
-def main():
-    if contains_number and contains_special_char and contains_uppercase and minimum_length:
-        print("password complexity is valid")
-    if contains_number and contains_special_char and contains_uppercase:
-        print("password must be longer")
-    if contains_number and contains_special_char and minimum_length:
-        print("Password must contain an uppercase letter")
-    if contains_number and contains_uppercase and minimum_length:
-        print("password must contain a special character")
-    if contains_uppercase and contains_special_char and minimum_length:
-        print("password must contain a digit")
-    else:
-        print("password must contain at least\n 1 uppercase letter \n one number \n one special character \n minimum length of 6")
-    
+def test(password_list):
+    for password in password_list:
+        if password == (contains_number and contains_special_char and contains_uppercase and minimum_length):
+            print("password complexity is valid")
+        if password == (contains_number and contains_special_char and contains_uppercase and not minimum_length):
+            print("password must be longer")
+        if password == (contains_number and contains_special_char and minimum_length and not contains_uppercase):
+            print("Password must contain an uppercase letter")
+        if password == (contains_number and contains_uppercase and minimum_length and not contains_special_char):
+            print("password must contain a special character")
+        if password == (contains_uppercase and contains_special_char and minimum_length and not contains_number):
+            print("password must contain a digit")
+        else:
+            print("password must contain at least\n 1 uppercase letter \n one number \n one special character \n minimum length of 6")
+        

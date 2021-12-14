@@ -16,3 +16,7 @@ def password_detector(wp, password):
     else:
         print("not a weak password")
 
+def test(password_list):
+    for password in password_list:
+        wp = weak_password_list()
+        password_detector(wp, password)

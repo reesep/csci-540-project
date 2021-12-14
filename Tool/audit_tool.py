@@ -16,7 +16,7 @@ Function checks for different for information and database vulnerabilities
 def run_audit_tool():
 
     ## Read in all columns that should be checked
-    config = open("config.csv","r")
+    config = open("Tool/config.csv","r")
     columns_to_check = config.read().strip().split(",") ## convert into list
 
     ## test_for_sql_injection.test() ## TO DO
@@ -24,7 +24,7 @@ def run_audit_tool():
 
     for each in columns_to_check:  
 
-        file = open("../Data/user.csv","r")
+        file = open("Data/user.csv","r")
         columns = file.readline().strip().replace('"',"").split(",")
         index = columns.index(each)
 
