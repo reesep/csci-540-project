@@ -5,11 +5,12 @@ def weak_password_list():
     passwords = file.readline
     wp = []
     for password in file:
-        md5 = hashlib.md5(password)
-        sha1 = hashlib.sha1(password)
-        sha256 = hashlib.sha256(password)
-        sha512 = hashlib.sha512(password)
-        return wp[md5, sha1, sha256, sha512]
+        md5 = hashlib.md5(password.encode())
+        sha1 = hashlib.sha1(password.encode())
+        sha256 = hashlib.sha256(password.encode())
+        sha512 = hashlib.sha512(password.encode())
+        wp.append([password, md5,sha1,sha256,sha512])
+    return wp
 def password_detector(wp, password):
     if wp == password:
         print("Weak password detected")
