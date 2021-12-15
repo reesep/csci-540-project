@@ -28,6 +28,7 @@ def contains_special_char(password):
 
 def test(password_list):
     for password in password_list:
+
         if password == (contains_number and contains_special_char and contains_uppercase and minimum_length):
             print("password complexity is valid")
         if password == (contains_number and contains_special_char and contains_uppercase and not minimum_length):
