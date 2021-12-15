@@ -7,6 +7,7 @@ import test_for_rainbow_vulnerability
 import test_for_weak_passwords
 import test_for_salt
 import test_for_hashing_algorithm
+import test_for_sql_injection
 
 ### TO DO: Replace .test() with appropriate function name (or change other .py
 ##                                                                                        (files to have .test func)
@@ -20,7 +21,7 @@ def run_audit_tool():
     config = open("config.csv","r")
     columns_to_check = config.read().strip().split(",") ## convert into list
 
-    ## test_for_sql_injection.test() ## TO DO
+    test_for_sql_injection.test()
     test_for_hashing_algorithm.test()
 
     for each in columns_to_check:  
@@ -35,12 +36,6 @@ def run_audit_tool():
             da_list.append(x[index])
         file.close()
 
-
-        #if test_for_password_complexity.test(each):
-            #print(each)
-
-        #if test_for_weak_passwords.test(each):
-            #print(each)
             
         if test_for_hashed_info.test(each,da_list):
             test_for_rainbow_vulnerability.test(da_list,each)
@@ -53,7 +48,7 @@ def run_audit_tool():
 
         if each == "password":
             test_for_weak_passwords.test(da_list)  ## Need to rework some things
-            #test_for_password_complexity.test(da_list) ## Need to rework some things
+            test_for_password_complexity.test(da_list) ## Need to rework some things
 
         
 

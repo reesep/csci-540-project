@@ -7,16 +7,17 @@ def minimum_length(password):
         return True
 
 def contains_uppercase(password):
-    if password.ascii_uppercase:
-        return True
-    else:
-        return False
+
+    for char in password:
+        if char.isupper():
+            return True
+    return False
 
 def contains_number(password):
-    if password.digits:
-        return True
-    else:
-        return False
+    for char in password:
+        if char.isdigit():
+            return True
+    return False
 
 def contains_special_char(password):
     special_char = ["!", "@", "#", "$", "%", "^", "&", "*", "?", '"', "'", "_", "-", "+", "<", ">", "[", "]", "{", "}", "~", "`", ":", ";"]
@@ -27,18 +28,34 @@ def contains_special_char(password):
     return special
 
 def test(password_list):
+
+    results = []
+
     for password in password_list:
 
-        if password == (contains_number and contains_special_char and contains_uppercase and minimum_length):
-            print("password complexity is valid")
-        if password == (contains_number and contains_special_char and contains_uppercase and not minimum_length):
-            print("password must be longer")
-        if password == (contains_number and contains_special_char and minimum_length and not contains_uppercase):
-            print("Password must contain an uppercase letter")
-        if password == (contains_number and contains_uppercase and minimum_length and not contains_special_char):
-            print("password must contain a special character")
-        if password == (contains_uppercase and contains_special_char and minimum_length and not contains_number):
-            print("password must contain a digit")
-        else:
-            print("password must contain at least\n 1 uppercase letter \n one number \n one special character \n minimum length of 6")
+        if (contains_number(password) and contains_special_char(password) and contains_uppercase(password) and minimum_length(password)):
+            #print("password complexity is valid")
+            pass
+        if (not minimum_length(password)):
+            #print("password must be longer")
+            results.append("Password must be longer")
+        if (not contains_uppercase(password)):
+            #print("Password must contain an uppercase letter")
+            results.append("Password must contain at least one uppercase letter")
+        if (not contains_special_char(password)):
+            #print("password must contain a special character")
+            results.append("Password must contain atleast one special character")
+        if (not contains_number(password)):
+            #print("password must contain a digit")
+            results.append("Password must contain atleast one digit")
+        #else:
+            #print("password must contain at least\n 1 uppercase letter \n one number \n one special character \n minimum length of 6")
         
+    print("--- Testing for password complexity ---")
+    if results == []:
+        print("Password policy is strong")
+    else:
+        print("Weak password policy detected, please ensure you are enforcing the following rules: ")
+        results = set(results)
+        for each in results:
+            print("*",each)
